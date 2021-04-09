@@ -1,8 +1,9 @@
 function ConvertHandler() {
-  
+  const units = ["lbs", "km","gal","mi"];
   this.getNum = function(input) {
-    let result;
-    
+		let numberRegex = /^(\d{1,}((\.)?(\d))?)((\/)\d{1,}((\.)?(\d))?)?/g  /*^(\d{1,}((.|\/)(\d{1,}))?)*/
+		input.toLowerCase();
+    let result = eval(input.match(numberRegex)[0]); // replace eval 
     return result;
   };
   
