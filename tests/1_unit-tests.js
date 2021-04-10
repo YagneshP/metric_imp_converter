@@ -17,4 +17,8 @@ suite('Unit Tests', function(){
 	test('get the fraction number with decimal from the input', function(){
 		assert.strictEqual(convertHandler.getNum("4.1/3.5L"),4.1/3.5,"getting fractional with decimal number")
 	})
+	test("throw error when input has double-fraction",function(){
+		assert.throws(convertHandler.getNum("1/2/3mi"),"Invalid Number")
+	})
+
 });
