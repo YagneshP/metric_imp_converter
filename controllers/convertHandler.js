@@ -13,7 +13,7 @@ function ConvertHandler() {
 			if(!consucetiveDotsRegex.test(num)&&!doubleFractionRegex.test(num)){
 				num = eval(num); // replace eval 
 			}else{
-				throw Error("Invalid Number") // not sure should return error
+				throw Error("invalid number") // not sure should return error
 			}
 		}else{
 			num = 1
@@ -32,23 +32,36 @@ function ConvertHandler() {
 			if(unitRegex.test(unit)){
 				return unit
 			} else{
-				throw Error("Invalid Error");
+				throw Error("invalid unit");
 			}
 		}else{
-			throw Error("Invalid Unit")
+			throw Error("invalid unit")
 		}
   };
   
   this.getReturnUnit = function(initUnit) {
-    let result;
-    
-    return result;
+		let units = {
+			mi:"km",
+			km:"mi",
+			L:"gal",
+			gal:"L",
+			lbs:"kg",
+			kg:"lbs"
+		}
+    return units[initUnit];
   };
 
   this.spellOutUnit = function(unit) {
-    let result;
+    let unitString = {
+			mi:"miles",
+			km:"kilometers",
+			L:"liters",
+			gal:"gallons",
+			lbs:"pounds",
+			kg:"kilograms"
+		}
     
-    return result;
+    return unitString[unit];
   };
   
   this.convert = function(initNum, initUnit) {
