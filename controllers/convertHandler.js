@@ -1,16 +1,16 @@
 function ConvertHandler() {
-  const units = ["lbs", "km","gal","mi"];
+
   this.getNum = function(input) {
 		// let numberRegex = /^(\d{1,}((\.)?(\d))?)((\/)\d{1,}((\.)?(\d))?)?/g  /*^(\d{1,}((.|\/)(\d{1,}))?)*/
 		let consucetiveDotsRegex = /\..?(?=\.)/
-		let doubleDividerRegex = /\/.?(?=\/)/
-		let strRegex = /[a-z]/ // this regex will find the first word and its index in form of array
+		let doubleFractionRegex = /\/.?(?=\/)/
+		let strRegex = /[a-z]/ 
 		let inputLower =	input.toLowerCase(); 
-		let index = inputLower.match(strRegex)["index"];
+		let index = inputLower.match(strRegex)["index"];//find the first word and its index 
 		let num;
 		if(index && index !== 0){
 			num = inputLower.slice(0,index);
-			if(!consucetiveDotsRegex.test(num)&&!doubleDividerRegex.test(num)){
+			if(!consucetiveDotsRegex.test(num)&&!doubleFractionRegex.test(num)){
 				num = eval(num); // replace eval 
 			}else{
 				throw Error("Invalid Number") // not sure should return error
@@ -18,14 +18,25 @@ function ConvertHandler() {
 		}else{
 			num = 1
 		}
-    
     return num;
   };
   
   this.getUnit = function(input) {
-    let result;
-    
-    return result;
+    let strRegex = /[a-z]/ ;
+		let unitRegex = /^(mi|km|gal|l|lbs|kg)$/g;
+		let inputLower =	input.toLowerCase(); 
+		let index = inputLower.match(strRegex)["index"];//find the first word and its index 
+		let unit;
+		if(index){
+			unit = inputLower.slice(index);
+			if(unitRegex.test(unit)){
+				return unit
+			} else{
+				throw Error("Invalid Error");
+			}
+		}else{
+			throw Error("Invalid Unit")
+		}
   };
   
   this.getReturnUnit = function(initUnit) {
