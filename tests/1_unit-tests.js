@@ -19,7 +19,7 @@ suite('Unit Tests', function(){
 			assert.strictEqual(convertHandler.getNum("4.1/3.5L"),4.1/3.5,"getting fractional with decimal number")
 		})
 		test("should correctly return an error on a double-fraction",function(){
-			assert.throws(convertHandler.getNum("1/2/3mi"), errorInstance,"Invalid Number")
+			assert.throws(convertHandler.getNum("1/2/3mi"), errorInstance,"invalid number")
 		})
 		test("should correctly default to a numerical input of 1 when no numerical input is provided", function(){
 			assert.strictEqual(convertHandler.getNum("mi"),1,"getting 1 as default value for no input numeric");
@@ -31,11 +31,23 @@ suite('Unit Tests', function(){
 			assert.strictEqual(convertHandler.getUnit("1/3km"),"km","should read 'km' unit only")
 		})
 		test("should correctly return an error for an invalid input unit",function(){
-			assert.throws(convertHandler.getUnit("1.3mim"), errorInstance,"Invalid Unit")
-			assert.throws(convertHandler.getUnit("1.2mikm"),errorInstance,"Invalid Unit")
-			assert.throws(convertHandler.getUnit("1.2"),errorInstance,"Invalid Unit")
+			assert.throws(convertHandler.getUnit("1.3mim"), errorInstance,"invalid unit")
+			assert.throws(convertHandler.getUnit("1.2mikm"),errorInstance,"invalid unit")
+			assert.throws(convertHandler.getUnit("1.2"),errorInstance,"invalid unit")
 		})
-
+	})
+	suite("getReturnUnit function unit test",function(){
+		test("should return the correct return unit for each valid input unit",function(){
+			assert.strictEqual(convertHandler.getReturnUnit("mi"),"km","for 'mi' it returns 'km'")
+			assert.strictEqual(convertHandler.getReturnUnit("km"),"mi","for 'km' it returns 'mi'")
+		})
+	})
+	suite("spellOutUnit function unit test",function(){
+		test("should correctly return the spelled-out string unit for each valid input unit",function(){
+			assert.strictEqual(convertHandler.spellOutUnit("mi"),"miles","for 'mi' it returns 'miles'")
+			assert.strictEqual(convertHandler.spellOutUnit("km"),"kilometers","for 'km' it returns 'kilometers'")
+			assert.strictEqual(convertHandler.spellOutUnit("gal"),"gallons","for 'gal' it returns 'gallons'")
+		})
 	})
 
 });
