@@ -50,5 +50,25 @@ suite('Unit Tests', function(){
 			assert.strictEqual(convertHandler.spellOutUnit("gal"),"gallons","for 'gal' it returns 'gallons'")
 		})
 	})
+	suite("convert function unit test", function(){
+		test("should correctly convert gal to L", function(){
+			assert.strictEqual(convertHandler.convert(1.2,"gal"),4.54249,"converts gallons to liters")
+		})
+		test("should correctly convert L to gal", function(){
+			assert.strictEqual(convertHandler.convert(1.2,"L"),0.31701,"converts liters to gallons")
+		})
+		test("should correctly convert mi to km", function(){
+			assert.strictEqual(convertHandler.convert(1.2,"mi"),1.93121,"converts miles to kilometers")
+		})
+		test("should correctly convert km to mi", function(){
+			assert.strictEqual(convertHandler.convert(1.2,"km"),0.74565,"converts kilometers to miles")
+		})
+		test("should correctly convert lbs to kg", function(){
+			assert.strictEqual(convertHandler.convert(1.2,"lbs"),0.54431,"converts pounds to kilograms")
+		})
+		test("should correctly convert kg to lbs", function(){
+			assert.strictEqual(convertHandler.convert(1.2,"kg"),2.64555,"converts kilograms to pounds")
+		})
+	})
 
 });
