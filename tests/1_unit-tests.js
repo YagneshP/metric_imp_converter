@@ -28,7 +28,8 @@ suite('Unit Tests', function(){
 	suite("getUnit function unit tests", function(){
 		test("should correctly read each valid input unit",function(){
 			assert.strictEqual(convertHandler.getUnit("1.2mi"),"mi","should read 'mi' unit only");
-			assert.strictEqual(convertHandler.getUnit("1/3km"),"km","should read 'km' unit only")
+			assert.strictEqual(convertHandler.getUnit("1/3km"),"km","should read 'km' unit only");
+			assert.strictEqual(convertHandler.getUnit("1.3l"),"L","should return 'L' unit only");
 		})
 		test("should correctly return an error for an invalid input unit",function(){
 			assert.throws(convertHandler.getUnit("1.3mim"), errorInstance,"invalid unit")
