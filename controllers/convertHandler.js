@@ -71,13 +71,44 @@ function ConvertHandler() {
     const galToL = 3.78541;
     const lbsToKg = 0.453592;
     const miToKm = 1.60934;
-    let result;
-    
-    return result;
+		const roundFive = function(value){
+			return Number(Math.round(value+'e'+5)+'e-'+5);
+		}
+		switch (initUnit) {
+			case 'L':
+				return roundFive(initNum/galToL);
+				break;
+			case 'gal':
+				return roundFive(initNum*galToL) 
+				break;
+			case 'kg':
+				return roundFive(initNum/lbsToKg) 
+				break;
+			case 'lbs':
+				return roundFive(initNum*lbsToKg) 
+				break;
+			case 'km':
+				return roundFive(initNum/miToKm)
+				break;
+			case 'mi':
+				return roundFive(initNum*miToKm)
+				break;
+		}
+ 
   };
   
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
-    let result;
+		let unitStrings = {
+			lbs:"pounds",
+			L:"liters",
+			km:"kilometers",
+			mi:"miles",
+			kg:"kilograms",
+			gl:"gallons"
+		}
+		let initUnitString = unitStrings[initUnit];
+		let returnUnitString = unitStrings[returnUnit]
+    let result = `${initNum} ${initUnitString} converts to ${returnNum} ${returnUnitString}`;
     
     return result;
   };
