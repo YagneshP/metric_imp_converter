@@ -30,6 +30,9 @@ function ConvertHandler() {
 		if(index){
 			unit = inputLower.slice(index);
 			if(unitRegex.test(unit)){
+				if(unit === "l"){
+					return unit.toUpperCase();
+				}
 				return unit
 			} else{
 				throw Error("invalid unit");
