@@ -98,16 +98,9 @@ function ConvertHandler() {
   };
   
   this.getString = function(initNum, initUnit, returnNum, returnUnit) {
-		let unitStrings = {
-			lbs:"pounds",
-			L:"liters",
-			km:"kilometers",
-			mi:"miles",
-			kg:"kilograms",
-			gl:"gallons"
-		}
-		let initUnitString = unitStrings[initUnit];
-		let returnUnitString = unitStrings[returnUnit]
+	
+		let initUnitString = this.spellOutUnit(initUnit);
+		let returnUnitString = this.spellOutUnit(returnUnit);
     let result = `${initNum} ${initUnitString} converts to ${returnNum} ${returnUnitString}`;
     
     return result;
