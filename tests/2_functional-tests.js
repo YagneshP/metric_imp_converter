@@ -7,10 +7,10 @@ chai.use(chaiHttp);
 
 suite('Functional Tests', function() {
 	suite('GET /api/convert', function () {
-		test("1.2mi", function (done) {
+		test("should convert 1.2 mi to 1.93121 km", function (done) {
 			chai
 				.request(server)
-				.get("/api/convert")
+				.get("/api/convert?input=1.2mi")
 				.send({"initNum":1.2,"initUnit":'mi',"returnNum":1.93121,"returnUnit":'km',"string":'1.2 miles converts to 1.93121 kilometers'})
 				.end(function (err, res) {
 					if(err)	done(err)
